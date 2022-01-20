@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>Todo</servlet-name>
+		<servlet-class>com.feliveira.TodoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Todo</servlet-name>
+		<url-pattern>/todo</url-pattern>
+	</servlet-mapping>
+</web-app>
