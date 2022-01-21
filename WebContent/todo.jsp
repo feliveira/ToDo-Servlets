@@ -17,9 +17,10 @@
 	</div>
 	<div id="addTask">
 		<h1><span class="tasks">Adicione</span> uma Tarefa</h1>
-		<form action="/Todo/todo" method="POST">
+		<form id="adicionar" action="/Todo/todo" method="POST">
 			<input type="text" placeholder="Estudar Java..." name="todo">
-			<button type="submit">Adicionar</button>
+			<input type="hidden" name="action" value="adicionar">
+			<input class="button" type="submit" value="Adicionar Tarefa">
 		</form>
 	</div>
 		<ul>
@@ -33,7 +34,11 @@
 			       </c:forEach>
 			    </c:otherwise>
 			</c:choose>
-			
 		</ul>
+		
+		<form id="deletar" action="/Todo/todo" method="POST">
+			<input type="hidden" name="action" value="deletar">
+			<input class="button" type="submit" value="Deletar Tarefas">
+		</form>
 </body>
 </html>

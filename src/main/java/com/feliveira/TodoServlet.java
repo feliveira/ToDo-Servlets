@@ -23,18 +23,26 @@ public class TodoServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		
 		HttpSession session = req.getSession();
-		
+		session.setAttribute("action", req.getParameter("action"));
 		
 		if(session.getAttribute("todoList") == null) {
-			if(req.getParameter("todo").length() >= 1) {
-				session.setAttribute("todoList", req.getParameter("todo"));
+			if(session.getAttribute("action").toString().equals("adicionar")) {
+				if(req.getParameter("todo").length() >= 1) {
+					session.setAttribute("todoList", req.getParameter("todo"));
+				}
 			}
 		}
 		else {
-			if(req.getParameter("todo").length() >= 1) {
-				String todos = session.getAttribute("todoList").toString() + "," + req.getParameter("todo");
-				session.setAttribute("todoList", todos);
+			if(session.getAttribute("action").toString().equals("adicionar")) {
+				if(req.getParameter("todo").length() >= 1) {
+					String todos = session.getAttribute("todoList").toString() + "," + req.getParameter("todo");
+					session.setAttribute("todoList", todos);
+				}
 			}
+			else {
+				session.removeAttribute("todoList");
+			}
+			
 			
 		}
 		
